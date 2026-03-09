@@ -106,27 +106,27 @@ N_x = 100  #Lengde per periode
 N_p = 12 * N_x
 
 #Definerer alpha som array
-alphaArray = np.linspace(0, 1, 50)
+alphaArray = np.linspace(0.01, 0.99, 50)
 beta_k = np.array([0.01, 1, 2, 3, 4, 5, 10, 1000])
 
 # kjør simuleringene
 print("Simulating particle stream...")
-jAlpha = runSimulation3c(alphaArray, beta_k[7], T_p, N_p, N_x, grid)
+jAlpha = runSimulation3c(alphaArray, beta_k[7], T_p, N_x, N_p, grid)
 print("Simulation completed \n")
 
 # For alle beta k til oppgave d)
 print("Simulating particle stream for different beta_k-values...")
-jAlpha1 = runSimulation3c(alphaArray, beta_k[0], T_p, N_p, N_x, grid)
-jAlpha2 = runSimulation3c(alphaArray, beta_k[1], T_p, N_p, N_x, grid)
-jAlpha3 = runSimulation3c(alphaArray, beta_k[2], T_p, N_p, N_x, grid)
-jAlpha4 = runSimulation3c(alphaArray, beta_k[3], T_p, N_p, N_x, grid)
-jAlpha5 = runSimulation3c(alphaArray, beta_k[4], T_p, N_p, N_x, grid)
-jAlpha6 = runSimulation3c(alphaArray, beta_k[5], T_p, N_p, N_x, grid)
-jAlpha7 = runSimulation3c(alphaArray, beta_k[6], T_p, N_p, N_x, grid)
+jAlpha1 = runSimulation3c(alphaArray, beta_k[0], T_p, N_x, N_p, grid)
+jAlpha2 = runSimulation3c(alphaArray, beta_k[1], T_p, N_x, N_p, grid)
+jAlpha3 = runSimulation3c(alphaArray, beta_k[2], T_p, N_x, N_p, grid)
+jAlpha4 = runSimulation3c(alphaArray, beta_k[3], T_p, N_x, N_p, grid)
+jAlpha5 = runSimulation3c(alphaArray, beta_k[4], T_p, N_x, N_p, grid)
+jAlpha6 = runSimulation3c(alphaArray, beta_k[5], T_p, N_x, N_p, grid)
+jAlpha7 = runSimulation3c(alphaArray, beta_k[6], T_p, N_x, N_p, grid)
 print("Simulation completed \n")
 
 # analytisk løsning
-jAnal = analyticalSolution(alphaArray)
+jAnal = analyticalSolution(alphaArray, T_p, N_x)
 
 plt.figure(figsize=(10, 6))
 
@@ -165,7 +165,7 @@ N_p = 40 * N_x
 #Område
 grid = 20 #20 i lengde på området
 
-jVals = runSimulation3b(T_pArray, grid, N_x, N_p, alpha, beta_k)
+jVals = runSimulation3e(T_pArray, grid, N_x, N_p, alpha, beta_k)
 jAnal = analyticalSolution(alpha, T_pArray, N_x)
 
 plt.plot(T_pArray, jVals, label = "Simulering")
