@@ -48,7 +48,7 @@ for n in range(cycles):
 
     print(f"{n:^16} | {jMean:18.6e}")
 
-"""
+
 #Generer J-verdier med alpha = 0.1
 alpha = 0.1
 print("\nSimulation 2")
@@ -66,7 +66,7 @@ for n in range(cycles):
     jMean = np.mean(alpha01JArray[startId:endId])
 
     print(f"{n:^16} | {jMean:18.6e}")
-
+"""
 
 # Oppgave 3b 
 # Konstanter

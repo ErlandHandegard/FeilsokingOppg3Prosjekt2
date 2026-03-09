@@ -21,7 +21,8 @@ def runSimulationVectorized(grid, initialPositions, beta_k, alpha, N_x, N_p, T_p
         
         # Vi henter ut sannsynlighetene for de indeksene der partiklene faktisk står
         pPlus_all = current_probs[0, positions]
-        pStay_all = current_probs[1, positions]
+        pStay_all = current_probs[1, positions] #Feilen ligger her pStay blir en array av 1
+        #Men current_probs er ikke en array konstant lik 1. 
         
         # Trekk tilfeldige tall for alle partikler samtidig
         outcomes = np.random.rand(N_p)
@@ -37,6 +38,9 @@ def runSimulationVectorized(grid, initialPositions, beta_k, alpha, N_x, N_p, T_p
         nMinus = np.sum(steps == -1)
         jVals.append((nPlus - nMinus) / N_p)
         
+        if timeStep == 700:
+            print("Brake point") #Bra punkt å stoppe i debuggeren
+
         # 7. OPPDATER POSISJONER (i NumPy-arrayen)
         positions = (positions + steps) % grid
         
