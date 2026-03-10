@@ -2,7 +2,7 @@ import numpy as np
 from PotensialOgSannsynlighetsfunksjonerOppg3 import *
 
 #Vi brukte vektorisering av numpy objekter for å kjøre koden raskere. 
-def runSimulationVectorized(grid, initialPositions, beta_k, alpha, N_x, N_p, T_p, totalSteps):
+def runSimulationVectorized(grid, initialPositions, beta_k, alpha, N_x, N_p, T_p, totalSteps, testTimeStep = False):
     #initialiserer startposisjonene i ett numpy array
     positions = initialPositions(grid, N_p)
     
@@ -38,8 +38,13 @@ def runSimulationVectorized(grid, initialPositions, beta_k, alpha, N_x, N_p, T_p
         nMinus = np.sum(steps == -1)
         jVals.append((nPlus - nMinus) / N_p)
         
-        if timeStep == 700:
-            #print("Brake point") #Bra punkt å stoppe i debuggeren
+        if testTimeStep and timeStep == 700:
+            print("Brake point") #Bra punkt å stoppe i debuggeren
+            print("Nplus og nMinus i timestep 700:")
+            print(nPlus)
+            print(nMinus)
+            print("jVals bør være stor her: ")
+            print(jVals[700])
             pass
 
         # 7. OPPDATER POSISJONER (i NumPy-arrayen)

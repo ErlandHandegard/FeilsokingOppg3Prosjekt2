@@ -32,7 +32,7 @@ grid = 200                      #Lengde på område
 
 #Generer J-verdier med alpha = 0.8
 print("Computing Simulation 1...")
-jVals08 = runSimulationVectorized(grid, initialPositions3a, beta_k, alpha, N_x, N_p, T_p, totalSteps)
+jVals08 = runSimulationVectorized(grid, initialPositions3a, beta_k, alpha, N_x, N_p, T_p, totalSteps, True)
 print("Simulation completed. \n")
 
 # Konverter til numpy array for enkel slicing
@@ -67,7 +67,7 @@ for n in range(cycles):
 
     print(f"{n:^16} | {jMean:18.6e}")
 """
-
+"""
 # Oppgave 3b 
 # Konstanter
 alpha = 0.8                     #Angir formen på potensial funksjonen
@@ -75,7 +75,7 @@ N_x   = 100                     #Periode på potensialfunksjonen
 beta_k = 1000                   #Proposjonal med forholdet mellom temperaturen og potensialet
 
 #Tid
-T_pArray = np.arange(1, 1001, 20)    #Liste med ulike tidsepoker
+T_pArray = np.arange(1, 2001, 40)    #Liste med ulike tidsepoker
 totalSteps = 20 * T_pArray           #Totalt antall steg
 
 #Partikler oppgave 3a
@@ -84,7 +84,7 @@ N_p = 40 * N_x
 #Område
 grid = 200                      #Lengde på område
 
-jVals = runSimulation3b(T_pArray, grid, N_x, N_p, beta_k, alpha)    
+jVals = runSimulation3b(T_pArray, grid, N_x, N_p, alpha, beta_k)    
 
 plt.plot(T_pArray, jVals)
 plt.title("Plotting for 3b: ")
@@ -92,6 +92,7 @@ plt.xlabel("Ulike tidsteg")
 plt.ylabel("Gjennomsnitlig forflytninger")
 plt.grid()
 plt.show()
+
 
 """
 #Oppgave 3 c og d
@@ -111,18 +112,18 @@ beta_k = np.array([0.01, 1, 2, 3, 4, 5, 10, 1000])
 
 # kjør simuleringene
 print("Simulating particle stream...")
-jAlpha = runSimulation3c(alphaArray, beta_k[7], T_p, N_p, N_x, grid)
+jAlpha = runSimulation3c(alphaArray, beta_k[7], T_p, N_x, N_p, grid)
 print("Simulation completed \n")
 
 # For alle beta k til oppgave d)
 print("Simulating particle stream for different beta_k-values...")
-jAlpha1 = runSimulation3c(alphaArray, beta_k[0], T_p, N_p, N_x, grid)
-jAlpha2 = runSimulation3c(alphaArray, beta_k[1], T_p, N_p, N_x, grid)
-jAlpha3 = runSimulation3c(alphaArray, beta_k[2], T_p, N_p, N_x, grid)
-jAlpha4 = runSimulation3c(alphaArray, beta_k[3], T_p, N_p, N_x, grid)
-jAlpha5 = runSimulation3c(alphaArray, beta_k[4], T_p, N_p, N_x, grid)
-jAlpha6 = runSimulation3c(alphaArray, beta_k[5], T_p, N_p, N_x, grid)
-jAlpha7 = runSimulation3c(alphaArray, beta_k[6], T_p, N_p, N_x, grid)
+jAlpha1 = runSimulation3c(alphaArray, beta_k[0], T_p, N_x, N_p, grid)
+jAlpha2 = runSimulation3c(alphaArray, beta_k[1], T_p, N_x, N_p, grid)
+jAlpha3 = runSimulation3c(alphaArray, beta_k[2], T_p, N_x, N_p, grid)
+jAlpha4 = runSimulation3c(alphaArray, beta_k[3], T_p, N_x, N_p, grid)
+jAlpha5 = runSimulation3c(alphaArray, beta_k[4], T_p, N_x, N_p, grid)
+jAlpha6 = runSimulation3c(alphaArray, beta_k[5], T_p, N_x, N_p, grid)
+jAlpha7 = runSimulation3c(alphaArray, beta_k[6], T_p, N_x, N_p, grid)
 print("Simulation completed \n")
 
 # analytisk løsning
@@ -152,6 +153,8 @@ plt.ylabel(r"Gjennomsnittlig strøm $J$", fontsize=12)
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.show()
+"""
+
 
 """
 #Oppgave 3e
