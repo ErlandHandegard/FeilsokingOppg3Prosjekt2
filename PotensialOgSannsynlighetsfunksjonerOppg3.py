@@ -4,6 +4,8 @@ import numpy as np
 def potensialOppg3(x, alpha, N_x, potensialType):
     if potensialType:
         return np.zeros_like(np.atleast_1d(x), dtype=float)
+    if not (0 < alpha < 1):
+        raise ValueError(f"alpha must be strictly between 0 and 1, got {alpha}")
     
     # Tving x til å være en numpy array med en gang
     x = np.atleast_1d(x)
@@ -25,6 +27,8 @@ def potensialOppg3(x, alpha, N_x, potensialType):
 
 #Skriver en ny probability funksjon som er lettere å normalisere: 
 def probabilitiesOppg3(grid, beta_k, alpha, N_x, potensialType = True):
+    if (not potensialType) and (not (0 < alpha < 1)):
+        raise ValueError(f"alpha must be strictly between 0 and 1 for ratchet potential, got {alpha}")
     #Beregner potensialet på nåverende posisjon samt potensialet til høyre og venstre 
     #som vi kaller pluss og minus likt som i oppgaveteksten
     currentPotensial = potensialOppg3(grid, alpha, N_x, potensialType)

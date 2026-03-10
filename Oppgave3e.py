@@ -15,7 +15,7 @@ def initialPositions3e(grid, N_p): #Hentet fra oppgave b
 
 # grid, initialPositions, beta_k, alpha, N_x, N_p, T_p, totalSteps
 
-def runSimulation3b(T_pArray, grid, N_x, N_p, alpha, beta_k):
+def runSimulation3e(T_pArray, grid, N_x, N_p, alpha, beta_k):
     jMeanValues = []
     print("Estimating the avarage of J for each time step... ")
     for T_p in T_pArray:               #Itererer gjennom de ulike tidsepokene
